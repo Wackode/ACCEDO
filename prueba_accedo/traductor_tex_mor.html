@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>prueba morse</title>
+</head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style/style.css">
+<body>
+	<div class="general">
+		<div class="cabeza">
+			<h1>BIENVENIDO AL TRADUCTOR MORSE</h1>
+				<nav class="nav_bar">
+					<a class="boton_1" href="index.html">Inicio</a>
+					<a class="boton_1" href="traductor_tex_mor.html">traducir a morse</a>
+	          		<a class="boton_1" href="traductor_mor_tex.html">traducir de morse</a>
+	        	</nav>
+        	</div>
+			<div class="cuerpo">
+				<legend>Ingrese el texto a traducir</legend>
+				<textarea type="text" id="textToConvert" rows="4" cols="40"></textarea>
+		    	<legend>Texto traducido</legend>
+		    	<textarea type="text" id="newText" rows="4" cols="40"></textarea>
+		    	<br>
+		    	<button onclick="convert()">Traducir</button>
+		    	<input type="reset" value="borrar" onclick="javascript:eraseText();">
+		</div>
+		    <script type="text/javascript">
+		        function convert()
+		        {
+		            var letters = [ ' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' ];
+		            var morseLetters = [ "//", ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..",  "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--..", ".----", "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----.", "-----"];
+		            
+		            var textToChange = document.getElementById("textToConvert").value;
+		            var newText = "";
+		            for (var i = 0; i < textToChange.length; i++) 
+		            {
+		                for (var j = 0; j < 37; j++) 
+		                {
+		                    if (textToChange[i].toLowerCase() == letters[j]) 
+		                    {
+		                        newText += morseLetters[j];
+		                        newText += "\xa0";
+		                        break;	
+		                    }        
+		                }
+		            }
+		        document.getElementById("newText").innerHTML = newText;
+		        }
+		        function eraseText() 
+		        {
+				    document.getElementById("textToConvert").value = "";
+				}
+		    </script>
+    </div>
+</body>
+</html>
